@@ -196,8 +196,7 @@ const Footer = () => {
         <aside className="w-full flex justify-center items-center">
           <div className="lg:w-[50%] w-full px-3 flex lg:flex-row flex-col gap-4 py-5 items-center justify-between">
             <p className="text-center text-gray-300">
-              {new Date().getFullYear()} Copyright © 2022 PrashantAdvait
-              Foundation
+              {new Date().getFullYear()} Copyright © PrashantAdvait Foundation
             </p>
             <p className="text-white hover:underline text-center">
               Terms & Conditions | Privacy Policy | Undertaking
