@@ -47,11 +47,19 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 
 ## Deployed URL
 
-Check out the deployed version of this project on Vercel: [https://paf-web-assignment.vercel.app/]
+Check out the deployed version of this project on Vercel: https://paf-web-assignment.vercel.app/
 
 ![Project Screenshot](./public/ScreenshotOne.png)
 
-![Project Screenshot](./assets/ScreenshotTwo.png)
+![Project Screenshot](./public/ScreenshotTwo.png)
+
+## Responsive
+
+<p align="center">
+  <img src="./public/Screenshot3.png" alt="Screenshot 1" width="200" />
+  <img src="./public/Screenshot4.png" alt="Screenshot 2" width="200" />
+  <img src="./public/Screenshot5.png" alt="Screenshot 3" width="350" />
+</p>
 
 ## Learn More
 
