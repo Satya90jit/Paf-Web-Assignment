@@ -5,6 +5,31 @@ import { useRouter } from "next/navigation";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+
+const CustomPrevArrow = (props: any) => {
+  const { className, style, onClick } = props;
+  return (
+    <button
+      className={`absolute top-1/2 transform -translate-y-1/2 -left-4 z-10 p-2 bg-orange-600/50 text-white rounded-full hover:bg-gray-800 common-transition shadow-[0_3px_10px_rgb(0,0,0,0.2)] border-2 border-white`}
+      onClick={onClick}
+    >
+      <FaArrowLeft />
+    </button>
+  );
+};
+
+const CustomNextArrow = (props: any) => {
+  const { onClick } = props;
+  return (
+    <button
+      className={`absolute top-1/2 transform -translate-y-1/2 -right-4 z-10 p-2 bg-orange-600/50 text-white rounded-full hover:bg-gray-800 common-transition shadow-[0_3px_10px_rgb(0,0,0,0.2)] border-2 border-white`}
+      onClick={onClick}
+    >
+      <FaArrowRight />
+    </button>
+  );
+};
 
 const RelatedContent = ({
   relatedContents,
@@ -20,12 +45,15 @@ const RelatedContent = ({
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
+    prevArrow: <CustomPrevArrow />,
+    nextArrow: <CustomNextArrow />,
+    arrow: false,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
           infinite: true,
           dots: true,
         },
@@ -34,8 +62,10 @@ const RelatedContent = ({
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 2,
-          initialSlide: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+          arrow: true,
         },
       },
     ],
