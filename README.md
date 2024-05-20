@@ -55,11 +55,7 @@ Check out the deployed version of this project on Vercel: https://paf-web-assign
 
 ## Responsive
 
-<p align="center">
-  <img src="./public/Screenshot3.png" alt="Screenshot 1" width="250" />
-  <img src="./public/Screenshot4.png" alt="Screenshot 2" width="250" />
-  <img src="./public/Screenshot5.png" alt="Screenshot 3" width="250" />
-</p>
+![Project Screenshot](./public/reponsive.jpeg)
 
 ## Learn More
 
