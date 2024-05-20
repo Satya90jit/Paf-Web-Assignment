@@ -3,7 +3,7 @@ import {
   RelatedContent,
   VideoSeriesCard,
 } from "@/components/video-series";
-import useSWRAPI from "@/hooks/useSWRAPI";
+import { useSWRAPI } from "@/hooks";
 import { PublicLayout } from "@/layouts";
 import { useRouter } from "next/router";
 

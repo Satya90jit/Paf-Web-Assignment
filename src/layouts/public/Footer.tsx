@@ -170,7 +170,7 @@ const Footer = () => {
                 <MdOutlineWhatsapp />
               </div>
               <a
-                href="tel:+91-9650585100"
+                href="https://wa.me/919650585100"
                 className="flex flex-col gap-1 text-white"
               >
                 <span className=" text-slate-400 ">+91-9650585100</span>

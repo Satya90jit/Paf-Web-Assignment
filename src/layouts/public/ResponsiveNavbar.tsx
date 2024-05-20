@@ -1,10 +1,10 @@
-import { VolunteerActivism } from "@mui/icons-material";
-import { Collapse } from "@mui/material";
+import { useAppContext } from "@/contexts";
+import { ArrowDropDownOutlined, VolunteerActivism } from "@mui/icons-material";
+import { Button, Collapse, Menu, MenuItem } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiMenuAltLeft } from "react-icons/bi";
-import { MdExpandMore } from "react-icons/md";
 import {
   FaFacebookF,
   FaInstagram,
@@ -12,8 +12,29 @@ import {
   FaTwitter,
   FaYoutube,
 } from "react-icons/fa";
+import { MdExpandMore } from "react-icons/md";
 
+const langArr = ["हिन्दी", "English"];
 const ResponsiveNavbar = () => {
+  const [langAnchorEl, setLangAnchorEl] = useState(null);
+  const [currentLangMenu, setCurrentLangMenu] = useState("");
+  const { selectedLanguage, changeLanguage } = useAppContext();
+
+  const handleLangClick = (event: any) => {
+    setLangAnchorEl(event?.currentTarget);
+    setCurrentLangMenu("language");
+  };
+
+  const handleClose = () => {
+    setLangAnchorEl(null);
+    setCurrentLangMenu("");
+  };
+
+  const handleLangSelect = (lang: any) => {
+    changeLanguage?.(lang);
+    handleClose();
+  };
+  const langOpen = Boolean(langAnchorEl);
   const [open, setOpen] = useState(false);
   return (
     <section className="lg:hidden py-4 cursor-pointer bg-[#D24115] shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
@@ -25,13 +46,43 @@ const ResponsiveNavbar = () => {
             className="cursor-pointer w-8 h-8"
           />
         </Link>
-        <span onClick={() => setOpen(!open)}>
-          {open ? (
-            <AiOutlineClose className="text-2xl text-white" />
-          ) : (
-            <BiMenuAltLeft className="text-3xl text-white" />
-          )}
-        </span>
+        <div className="flex justify-center items-center gap-2">
+          <div className="w-fit px-3 py-1 mr-3 rounded-lg text-white border text-md font-semibold flex items-center justify-center gap-2">
+            <VolunteerActivism className="text-gray-200" />
+            Donate
+          </div>
+          <Button
+            className="text-white flex items-center capitalize"
+            onClick={handleLangClick}
+          >
+            <p className="border border-white px-1 rounded-md w-8">
+              {selectedLanguage === "English" ? "EN" : "HI"}
+            </p>
+            <ArrowDropDownOutlined
+              className={`transition-transform duration-200 ${
+                currentLangMenu === "language" ? "rotate-180" : "rotate-0"
+              }`}
+            />
+          </Button>
+          <Menu
+            anchorEl={langAnchorEl}
+            open={langOpen && currentLangMenu === "language"}
+            onClose={handleClose}
+          >
+            {langArr.map((lang, index) => (
+              <MenuItem key={index} onClick={() => handleLangSelect(lang)}>
+                {lang}
+              </MenuItem>
+            ))}
+          </Menu>
+          <span onClick={() => setOpen(!open)} className="inline-block w-6">
+            {open ? (
+              <AiOutlineClose className="text-2xl text-white" />
+            ) : (
+              <BiMenuAltLeft className="text-3xl text-white" />
+            )}
+          </span>
+        </div>
       </div>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <article className="bg-[#D24115] w-full shadow-sm max-h-[90vh] overflow-y-scroll pb-6">
