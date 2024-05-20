@@ -55,7 +55,7 @@ Check out the deployed version of this project on Vercel: https://paf-web-assign
 
 ## Responsive
 
-![Project Screenshot](./public/reponsive.jpeg)
+![Project Screenshot](./public/responsive.jpeg)
 
 ## Learn More
 
