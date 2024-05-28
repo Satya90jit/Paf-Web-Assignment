@@ -2,7 +2,11 @@ import { SearchBar } from "@/components/core";
 import { Search, ShoppingCartOutlined } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 
-const InsideNav = () => {
+const InsideNav = ({
+  insideNavClass,
+}: {
+  insideNavClass: string | undefined;
+}) => {
   const [show, setShow] = useState(false);
   const controlCartBox = () => {
     if (window.scrollY > 110) {
@@ -20,7 +24,11 @@ const InsideNav = () => {
   }, []);
 
   return (
-    <section className="bg-white sticky top-0 w-full z-50 border-b py-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]">
+    <section
+      className={`bg-white ${
+        insideNavClass ? insideNavClass : ""
+      } sticky top-0 w-full z-50 border-b py-2 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]`}
+    >
       <section className="w-full flex justify-between items-center h-full main-container">
         <div className="flex items-center gap-4">
           <img src="/ic_videoseries.png" className="h-6" />

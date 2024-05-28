@@ -4,6 +4,7 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import InnerBar from "./InnerBar";
 import MenuDrawer from "./MenuDrawer";
 import ResponsiveNavbar from "./ResponsiveNavbar";
 
@@ -33,7 +34,7 @@ const NavMenuItems = [
 
 const langArr = ["हिन्दी", "English"];
 
-const Navbar = () => {
+const Navbar = ({ navClass }: { navClass: string | undefined }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [currentMenu, setCurrentMenu] = useState(null);
   const [langAnchorEl, setLangAnchorEl] = useState(null);
@@ -70,19 +71,10 @@ const Navbar = () => {
 
   const open = Boolean(anchorEl);
   const langOpen = Boolean(langAnchorEl);
-
-  button: (active: any) => {
-    return {
-      "&:hover": {
-        boxShadow: "none",
-        background: "red",
-      },
-      boxShadow: active ? "none" : undefined, // Use your preferer color instead of undefined.
-      backgroundColor: active ? "yellow" : undefined, //Use your preferer color instead of undefined.
-    };
-  };
   return (
-    <section className="bg-[#D24115] shadow-md w-full">
+    <nav
+      className={`bg-[#D24115] shadow-md w-full ${navClass ? navClass : ""}`}
+    >
       <div className="main-container hidden lg:flex flex-row justify-between items-center w-full">
         <Link className="" href="/">
           <img
@@ -169,7 +161,7 @@ const Navbar = () => {
         </div>
       </div>
       <ResponsiveNavbar />
-    </section>
+    </nav>
   );
 };
 

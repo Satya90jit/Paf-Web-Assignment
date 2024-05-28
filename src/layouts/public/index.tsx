@@ -9,9 +9,19 @@ type Props = {
   children: React.ReactNode;
   title?: string;
   description?: string;
+  navClass?: string | undefined;
+  insideNavClass?: string | undefined;
+  innerBarClass?: string | undefined;
 };
 
-const PublicLayout = ({ children = <></>, title = "", description }: Props) => {
+const PublicLayout = ({
+  children = <></>,
+  title = "",
+  description,
+  navClass,
+  insideNavClass,
+  innerBarClass,
+}: Props) => {
   return (
     <>
       <Head>
@@ -19,9 +29,9 @@ const PublicLayout = ({ children = <></>, title = "", description }: Props) => {
         <title>{title}</title>
       </Head>
       <main>
-        <Navbar />
-        <InnerBar />
-        <InsideNav />
+        <Navbar navClass={navClass} />
+        <InnerBar innerBarClass={innerBarClass} />
+        <InsideNav insideNavClass={insideNavClass} />
         {children}
         <Footer />
       </main>
