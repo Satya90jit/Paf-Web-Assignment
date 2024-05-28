@@ -12,23 +12,23 @@ const NavMenuItems = [
   {
     title: "Live Sessions",
     subMenu: [
-      { title: "Gita Samagam", path: "/gita-samagam" },
+      { title: "Gita Samagam", path: "/" },
       { title: "Vedanta: Basics to Classics", path: "/vedanta-basics" },
     ],
   },
-  { title: "Video Series", path: "/video-series" },
-  { title: "Ap Books", path: "/ap-books" },
-  { title: "Ap Articles", path: "/ap-articles" },
+  { title: "Video Series", path: "/video-modules/series/course-series-eeb9d3" },
+  { title: "Ap Books", path: "/" },
+  { title: "Ap Articles", path: "/" },
   {
     title: "Invite",
     subMenu: [
-      { title: "For a Talk", path: "/invite-talk" },
-      { title: "For an Interview", path: "/invite-interview" },
+      { title: "For a Talk", path: "/" },
+      { title: "For an Interview", path: "/" },
     ],
   },
-  { title: "In Media", path: "/in-media" },
-  { title: "Careers", path: "/careers" },
-  { title: "Donate", path: "/donate" },
+  { title: "In Media", path: "/" },
+  { title: "Careers", path: "/" },
+  { title: "Donate", path: "/" },
 ];
 
 const langArr = ["हिन्दी", "English"];
@@ -59,7 +59,7 @@ const Navbar = () => {
   };
 
   const handleMenuClick = (path: any) => {
-    // router.push(path);
+    router.push(path);
     handleClose();
   };
 
@@ -70,6 +70,17 @@ const Navbar = () => {
 
   const open = Boolean(anchorEl);
   const langOpen = Boolean(langAnchorEl);
+
+  button: (active: any) => {
+    return {
+      "&:hover": {
+        boxShadow: "none",
+        background: "red",
+      },
+      boxShadow: active ? "none" : undefined, // Use your preferer color instead of undefined.
+      backgroundColor: active ? "yellow" : undefined, //Use your preferer color instead of undefined.
+    };
+  };
   return (
     <section className="bg-[#D24115] shadow-md w-full">
       <div className="main-container hidden lg:flex flex-row justify-between items-center w-full">
@@ -97,12 +108,14 @@ const Navbar = () => {
                     />
                   </Button>
                   <Menu
+                    className="mt-1"
                     anchorEl={anchorEl}
                     open={open && currentMenu === item?.title}
                     onClose={handleClose}
                   >
                     {item.subMenu.map((subItem, subIndex) => (
                       <MenuItem
+                        className="hover:bg-orange-300/30  hover:text-orange-700 font-medium common-transition mx-2 rounded-md"
                         key={subIndex}
                         onClick={() => handleMenuClick(subItem?.path)}
                       >
@@ -113,7 +126,7 @@ const Navbar = () => {
                 </>
               ) : (
                 <Button
-                  className="text-white capitalize"
+                  className="text-white capitalize hover:bg-orange-700  common-transition"
                   onClick={() => handleMenuClick(item?.path)}
                 >
                   {item?.title}
