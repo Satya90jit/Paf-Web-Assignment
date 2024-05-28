@@ -73,7 +73,7 @@ const Navbar = ({ navClass }: { navClass: string | undefined }) => {
   const langOpen = Boolean(langAnchorEl);
   return (
     <nav
-      className={`bg-[#D24115] shadow-md w-full ${navClass ? navClass : ""}`}
+      className={`bg-[#D24115] shadow-md  ${navClass ? navClass : "w-[100%]"}`}
     >
       <div className="main-container hidden lg:flex flex-row justify-between items-center w-full">
         <Link className="" href="/">

@@ -1,7 +1,5 @@
-import Icon from "@/assets/icon";
 import { ArrowRightAlt } from "@mui/icons-material";
 import Link from "next/link";
-import React from "react";
 
 const HeroSection = () => {
   return (
