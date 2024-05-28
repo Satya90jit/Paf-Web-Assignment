@@ -81,11 +81,12 @@ const OurJourney = () => {
               <YouTube className="text-youtube" />
               {YouTubeData?.category}
             </Link>
-            <div
-              className={`grid grid-cols-${YouTubeData?.statistics?.length} gap-6 mt-3`}
-            >
-              {YouTubeData?.statistics?.map((item) => (
-                <div className="bg-white rounded-md hover:bg-orange-500 group p-3 common-transition cursor-pointer">
+            <div className={`grid grid-cols-3 gap-6 mt-3`}>
+              {YouTubeData?.statistics?.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-md hover:bg-orange-500 group p-3 common-transition cursor-pointer"
+                >
                   <h4 className="text-2xl text-red-700 group-hover:text-white font-semibold">
                     {item?.value}
                   </h4>
@@ -104,11 +105,12 @@ const OurJourney = () => {
               <LanguageOutlined className="text-youtube" />
               {MediaData?.category}
             </Link>
-            <div
-              className={`grid grid-cols-${MediaData?.statistics?.length} gap-6 mt-3`}
-            >
-              {MediaData?.statistics?.map((item) => (
-                <div className="bg-white rounded-md hover:bg-orange-500 group p-3 common-transition cursor-pointer">
+            <div className={`grid grid-cols-1 gap-6 mt-3`}>
+              {MediaData?.statistics?.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-md hover:bg-orange-500 group p-3 common-transition cursor-pointer"
+                >
                   <h4 className="text-2xl text-red-700 group-hover:text-white font-semibold">
                     {item?.value}
                   </h4>
@@ -128,11 +130,12 @@ const OurJourney = () => {
             <FolderCopyOutlined className="text-youtube" />
             {ContentData?.category}
           </Link>
-          <div
-            className={`grid grid-cols-${ContentData?.statistics?.length} gap-6 mt-3`}
-          >
-            {ContentData?.statistics?.map((item) => (
-              <div className="bg-white rounded-md hover:bg-orange-500 group p-3 common-transition cursor-pointer">
+          <div className={`grid grid-cols-4 gap-6 mt-3`}>
+            {ContentData?.statistics?.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-md hover:bg-orange-500 group p-3 common-transition cursor-pointer"
+              >
                 <h4 className="text-2xl text-red-700 group-hover:text-white font-semibold">
                   {item?.value} <span>{item?.label}</span>
                 </h4>

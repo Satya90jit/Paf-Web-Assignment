@@ -82,8 +82,11 @@ const TopicsSection = () => {
           On Current Events
         </h1>
         <div className="flex flex-col gap-6 mt-12 ">
-          {currentEvents?.map((event) => (
-            <div className="hover:bg-orange-100/30 cursor-pointer p-5 rounded-md border-b common-transition">
+          {currentEvents?.map((event, index) => (
+            <div
+              key={index}
+              className="hover:bg-orange-100/30 cursor-pointer p-5 rounded-md border-b common-transition"
+            >
               <p className="text-xl font-semibold text-gray-700 mb-3">
                 {event?.title}
               </p>
@@ -118,8 +121,8 @@ const TopicsSection = () => {
           Topics Covered
         </h1>
         <div className="grid grid-cols-2 gap-8 mt-12">
-          {categories?.map((items) => (
-            <div>
+          {categories?.map((items, index) => (
+            <div key={index}>
               <div className="clip-custom bg-orange-700 text-white shadow-sm text-md rounded-md font-medium pr-7 pl-2 inline-block">
                 {items?.level}
               </div>

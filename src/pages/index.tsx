@@ -1,6 +1,11 @@
-import { HeroSection, OurJourney, TopicsSection } from "@/components/home";
+import {
+  Glimpses,
+  HeroSection,
+  InterviewPodcast,
+  OurJourney,
+  TopicsSection,
+} from "@/components/home";
 import { PublicLayout } from "@/layouts";
-import Link from "next/link";
 
 const Home = () => {
   return (
@@ -13,6 +18,8 @@ const Home = () => {
       <HeroSection />
       <TopicsSection />
       <OurJourney />
+      <InterviewPodcast />
+      <Glimpses />
     </PublicLayout>
   );
 };
