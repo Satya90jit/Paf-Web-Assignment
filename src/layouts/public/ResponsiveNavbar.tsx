@@ -108,9 +108,11 @@ const ResponsiveNavbar = () => {
               <p>Vedanta: Basic to Classics</p>
               <p>AP Books</p>
               <p>AP Articles</p>
-              <Link href={"/video-modules/series/course-series-eeb9d3"}>
-                Video Series
-              </Link>
+              <div>
+                <Link href={"/video-modules/series/course-series-eeb9d3"}>
+                  Video Series
+                </Link>
+              </div>
               <p>AP Circle</p>
               <p>Invite For Talk</p>
               <p>Invite For An Interview</p>

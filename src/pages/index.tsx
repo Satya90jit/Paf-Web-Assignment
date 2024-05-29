@@ -13,7 +13,7 @@ const Home = () => {
       title="Acharya Prashant"
       navClass="fixed top-0 left-0 z-50 w-screen"
       insideNavClass="hidden"
-      innerBarClass="mt-12"
+      innerBarClass="lg:mt-[48px] mt-[68px]"
     >
       <HeroSection />
       <TopicsSection />
