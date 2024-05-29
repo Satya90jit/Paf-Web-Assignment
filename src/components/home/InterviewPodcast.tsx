@@ -57,7 +57,7 @@ const InterviewPodcast = () => {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
+          dots: false,
         },
       },
       {
@@ -80,21 +80,21 @@ const InterviewPodcast = () => {
   };
 
   return (
-    <section className="main-container bg-orange-100/40 py-20 my-24 rounded-sm">
-      <div className="space-y-7">
-        <h1 className="text-5xl font-bold text-gray-900">
+    <section className="main-container bg-orange-100/40 lg:py-20 md:py-16 py-8 lg:my-24 md:my-16 my-6 rounded-sm">
+      <div className="md:space-y-7 space-y-5">
+        <h1 className="lg:text-5xl md:text-4xl text-3xl font-bold text-gray-900">
           Interviews and Podcasts
         </h1>
-        <button className="bg-orange-600 rounded-3xl text-white text-xl font-semibold px-8 py-2">
+        <button className="bg-orange-600 rounded-3xl text-white md:text-xl text-lg font-semibold px-8 py-2">
           Invite
         </button>
         <hr className="border-t-2 border-dotted border-red-700" />
       </div>
-      <div className="flex justify-between items-center my-8">
+      <div className="flex justify-between items-center md:my-8 my-6">
         <h2 className="text-xl font-medium text-gray-800">
           Videos from past Interviews and Podcasts
         </h2>
-        <p className="text-red-600 group cursor-pointer common-transition hover:text-red-500">
+        <p className="text-red-600 group cursor-pointer common-transition hover:text-red-500 hidden md:block">
           See all videos{" "}
           <ArrowRightAlt className="group-hover:-rotate-12 common-transition" />
         </p>
@@ -138,6 +138,10 @@ const InterviewPodcast = () => {
           })}
         </Slider>
       </div>
+      <p className="text-red-600 group cursor-pointer common-transition hover:text-red-500 md:hidden mt-4">
+        See all videos{" "}
+        <ArrowRightAlt className="group-hover:-rotate-12 common-transition" />
+      </p>
     </section>
   );
 };

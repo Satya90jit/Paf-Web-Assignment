@@ -28,7 +28,7 @@ const MenuDrawer = () => {
         }}
         transitionDuration={500}
       >
-        <article className="bg-white w-[30rem] shadow-sm cursor-pointer">
+        <article className="bg-white w-[25rem] shadow-sm cursor-pointer">
           <section className="main-container w-full flex flex-col pt-4 font-medium">
             <div className="flex items-center gap-2 pb-6">
               <span className="h-12 w-12 rounded-full bg-gray-700 text-xl text-white p-2 flex justify-center items-center">

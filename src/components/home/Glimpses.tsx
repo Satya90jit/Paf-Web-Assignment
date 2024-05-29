@@ -124,9 +124,9 @@ const Glimpses = () => {
   };
 
   return (
-    <section className="main-container my-16">
-      <h1 className="title text-center my-12">Glimpses</h1>
-      <div className="grid grid-cols-5 gap-3 h-full w-full relative">
+    <section className="main-container lg:my-12 md:my-8 my-6">
+      <h1 className="title text-center lg:my-12 md:my-8 my-6">Glimpses</h1>
+      <div className="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 gap-3 h-full w-full relative">
         <div className="absolute bottom-0 left-0 h-[5rem] w-full bg-gradient-to-t from-gray-800 to-transparent rounded-md"></div>
         {imageArray?.map((item, index) => (
           <div
@@ -137,7 +137,7 @@ const Glimpses = () => {
             <img src={item?.imageUrl} className="h-full object-cover w-full" />
           </div>
         ))}
-        <button className="absolute bottom-5 left-1/2 -translate-x-1/2 px-20 py-2 font-semibold rounded-3xl bg-orange-500/80 hover:bg-orange-500/90 text-white common-transition">
+        <button className="absolute bottom-5 left-1/2 -translate-x-1/2 lg:px-20 md:px-16 px-12 py-2 font-semibold rounded-3xl bg-orange-500/80 hover:bg-orange-500/90 text-white common-transition">
           See All
         </button>
       </div>
