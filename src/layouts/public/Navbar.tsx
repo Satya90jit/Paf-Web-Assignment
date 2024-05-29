@@ -4,7 +4,6 @@ import { Button, Menu, MenuItem } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import InnerBar from "./InnerBar";
 import MenuDrawer from "./MenuDrawer";
 import ResponsiveNavbar from "./ResponsiveNavbar";
 
@@ -13,23 +12,26 @@ const NavMenuItems = [
   {
     title: "Live Sessions",
     subMenu: [
-      { title: "Gita Samagam", path: "/" },
-      { title: "Vedanta: Basics to Classics", path: "/vedanta-basics" },
+      { title: "Gita Samagam", path: "/live-sessions/gita" },
+      {
+        title: "Vedanta: Basics to Classics",
+        path: "/live-sessions/vedanta-basics-to-classics",
+      },
     ],
   },
   { title: "Video Series", path: "/video-modules/series/course-series-eeb9d3" },
-  { title: "Ap Books", path: "/" },
-  { title: "Ap Articles", path: "/" },
+  { title: "Ap Books", path: "/books" },
+  { title: "Ap Articles", path: "/articles" },
   {
     title: "Invite",
     subMenu: [
-      { title: "For a Talk", path: "/" },
-      { title: "For an Interview", path: "/" },
+      { title: "For a Talk", path: "/invite/for-talks" },
+      { title: "For an Interview", path: "/invite/for-Interview" },
     ],
   },
-  { title: "In Media", path: "/" },
-  { title: "Careers", path: "/" },
-  { title: "Donate", path: "/" },
+  { title: "In Media", path: "/media" },
+  { title: "Careers", path: "/hiring" },
+  { title: "Donate", path: "/contribute" },
 ];
 
 const langArr = ["हिन्दी", "English"];
