@@ -39,7 +39,7 @@ const HeroSection = () => {
           </Link>
         </div>
       </article>
-      <article className="lg:mx-0 mx-auto px-4 lg:px-0">
+      <article className="lg:mx-0 mx-auto px-4 lg:px-8">
         <div className="relative lg:my-20 md:my-16 my-8 p-5 rounded-xl bg-[url('/hero-bg-sri-krisna.jpg')] bg-cover bg-no-repeat flex lg:flex-row flex-col justify-center items-center">
           <img
             src="/sri-krisna.jpg"

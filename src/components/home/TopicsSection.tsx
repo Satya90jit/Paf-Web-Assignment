@@ -1,3 +1,4 @@
+import { useWindowSize } from "@/hooks";
 import {
   AccessTime,
   ArrowRightAlt,
@@ -5,9 +6,13 @@ import {
   SmsOutlined,
   ThumbUpOffAlt,
 } from "@mui/icons-material";
-import React from "react";
+import React, { useEffect, useState } from "react";
+interface Category {
+  level: "Beginner" | "Intermediate" | "Advanced";
+  labels: string[];
+}
 
-const categories = [
+const categories: Category[] = [
   {
     level: "Beginner",
     labels: [
@@ -20,6 +25,10 @@ const categories = [
       "Women Liberation",
       "People and Society",
     ],
+  },
+  {
+    level: "Intermediate",
+    labels: ["10+ Literature subjects", "Spirituality and Wisdom"],
   },
   {
     level: "Advanced",
@@ -35,12 +44,7 @@ const categories = [
       "6+ Other Streams",
     ],
   },
-  {
-    level: "Intermediate",
-    labels: ["10+ Literature subjects", "Spirituality and Wisdom"],
-  },
 ];
-
 const currentEvents = [
   {
     title:
@@ -75,10 +79,21 @@ const currentEvents = [
 ];
 
 const TopicsSection = () => {
+  const [width] = useWindowSize();
+  const [orderedCategories, setOrderedCategories] =
+    useState<Category[]>(categories);
+
+  useEffect(() => {
+    if (width >= 768) {
+      setOrderedCategories([categories[0], categories[2], categories[1]]); // Large and tablet screens
+    } else {
+      setOrderedCategories(categories); // Mobile screens
+    }
+  }, [width]);
   return (
     <section className="main-container flex lg:flex-row flex-col justify-between gap-8">
       <div className="lg:p-8 md:p-5 py-5 px-3 bg-orange-200/10 lg:w-1/2 w-full">
-        <h1 className="text-gray-800 font-semibold text-center title">
+        <h1 className="text-gray-800 font-semibold text-center lg:text-4x md:text-3xl text-2xl">
           On Current Events
         </h1>
         <div className="flex flex-col gap-6 lg:mt-12 mt-6">
@@ -117,11 +132,11 @@ const TopicsSection = () => {
         </p>
       </div>
       <div className="p-8 bg-orange-200/10 lg:w-1/2 w-full">
-        <h1 className="title text-gray-800 font-semibold text-center">
+        <h1 className="lg:text-4x md:text-3xl text-2xl text-gray-800 font-semibold text-center">
           Topics Covered
         </h1>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-8 lg:mt-12 mt-6">
-          {categories?.map((items, index) => (
+          {orderedCategories?.map((items, index) => (
             <div key={index}>
               <div className="clip-custom bg-orange-700 text-white shadow-sm text-md rounded-md font-medium pr-7 pl-2 inline-block">
                 {items?.level}
