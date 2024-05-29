@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <section className="lg:main-container">
       <img src="/ap.jpg" className="h-full w-full lg:hidden" />
-      <article className="lg:relative main-container">
+      <article className="lg:relative lg:mx-0 mx-auto px-4 lg:px-0">
         <img
           src="/ap-hero-image.jpg"
           className="h-full w-full hidden lg:block"
@@ -39,13 +39,13 @@ const HeroSection = () => {
           </Link>
         </div>
       </article>
-      <article className="main-container ">
-        <div className="relative lg:my-24 md:my-16 my-8 p-5 rounded-xl bg-[url('/hero-bg-sri-krisna.jpg')] bg-cover bg-no-repeat flex lg:flex-row flex-col justify-center items-center">
+      <article className="lg:mx-0 mx-auto px-4 lg:px-0">
+        <div className="relative lg:my-20 md:my-16 my-8 p-5 rounded-xl bg-[url('/hero-bg-sri-krisna.jpg')] bg-cover bg-no-repeat flex lg:flex-row flex-col justify-center items-center">
           <img
             src="/sri-krisna.jpg"
-            className="rounded-full lg:h-[12rem] h-[5rem] lg:w-[12rem] w-[5rem] absolute lg:left-7 -top-10"
+            className="rounded-full lg:h-[12rem] h-[5rem] lg:w-[12rem] w-[5rem] absolute lg:left-7 lg:top-auto -top-10"
           />
-          <div className="lg:space-y-3 space-y-1 mt-7">
+          <div className="lg:space-y-3 space-y-1 mt-7 lg:mt-0">
             <h2 className="text-gray-900 lg:text-4xl text-xl font-semibold text-center">
               Shrimad Bhagavad Gita Live Session
             </h2>
