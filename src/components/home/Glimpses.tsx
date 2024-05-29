@@ -126,7 +126,7 @@ const Glimpses = () => {
   return (
     <section className="main-container lg:my-12 md:my-8 my-6">
       <h1 className="title text-center lg:my-12 md:my-8 my-6">Glimpses</h1>
-      <div className="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 gap-3 h-full w-full relative">
+      <div className="grid lg:grid-cols-5 md:grid-cols-4 grid-cols-3 lg:gap-3 md:gap-2 gap-1 h-full w-full relative">
         <div className="absolute bottom-0 left-0 h-[5rem] w-full bg-gradient-to-t from-gray-800 to-transparent rounded-md"></div>
         {imageArray?.map((item, index) => (
           <div
