@@ -1,10 +1,44 @@
 import { Menu } from "@mui/icons-material";
 import { Drawer } from "@mui/material";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
+import { MenuItems } from "./ResponsiveNavbar";
+
+const OtherItems = [
+  { title: "My Video Series", path: "/videos" },
+  { title: "My eBooks", path: "/ebooks" },
+  { title: "Recorded Sessions", path: "/sessions" },
+  { title: "My Cart", path: "/cart" },
+  { title: "My Donations", path: "/donations" },
+  { title: "My Orders", path: "/orders" },
+  { title: "Scholarship Requests", path: "/scholarships" },
+];
+
+const MoreItems = [
+  { title: "PrashantAdvait Foundation", path: "/prashantadvait" },
+  { title: "Ghar Ghar Upanishad", path: "/ghargharupanishad" },
+  { title: "About Acharya Prashant", path: "/aboutacharyaprashant" },
+];
+
+const CategoryItems = [
+  { title: "Vedant - Upanishads", path: "/vedant-upanishads" },
+  { title: "Vedant - Bhagavad Gita", path: "/vedant-bhagavad-gita" },
+  { title: "Other Scriptures", path: "/other-scriptures" },
+  { title: "Saints and Masters", path: "/saints-masters" },
+  { title: "Other Streams", path: "/other-streams" },
+  { title: "Life Questions", path: "/life-questions" },
+];
 
 const MenuDrawer = () => {
   const [open, setOpen] = useState(false);
+  const router = useRouter();
   const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleMenuItem = (path: any) => {
+    router?.push(`${path}`);
     setOpen(false);
   };
 
@@ -42,48 +76,56 @@ const MenuDrawer = () => {
               </div>
             </div>
             <hr />
-            <div className="w-full space-y-3 py-6 text-gray-600 text-sm">
-              <p>Gita Samagam</p>
-              <p>Vedanta: Basic to Classics</p>
-              <p>AP Books</p>
-              <p>AP Articles</p>
-              <p>Video Series</p>
-              <p>AP Circle</p>
-              <p>Invite For Talk</p>
-              <p>Invite For An Interview</p>
-              <p>Media and Public Interaction</p>
-              <p>Contact Us</p>
-              <p>Careers</p>
-              <p>Donate</p>
+            <div className="flex flex-col w-full py-6 text-gray-600 text-sm">
+              {MenuItems?.map((item) => (
+                <div
+                  key={item?.title}
+                  onClick={() => handleMenuItem(`${item?.path}`)}
+                  className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
+                >
+                  {item?.title}
+                </div>
+              ))}
             </div>
             <hr />
-            <div className="w-full space-y-3 py-6 text-gray-600 text-sm">
-              <p>My Video Series</p>
-              <p>My eBooks</p>
-              <p>Recorded Sessions</p>
-              <p>My Cart</p>
-              <p>My Donations</p>
-              <p>My Orders</p>
-              <p>Scholarship Requests</p>
+            <div className="flex flex-col w-full py-6 text-gray-600 text-sm">
+              {OtherItems?.map((item) => (
+                <div
+                  key={item?.title}
+                  onClick={() => handleMenuItem(`${item?.path}`)}
+                  className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
+                >
+                  {item?.title}
+                </div>
+              ))}
             </div>
             <hr />
-            <div className="w-full space-y-3 py-6 text-gray-600 text-sm">
-              <h1 className="text-gray-800 font-semibold">MORE</h1>
-              <p>PrashantAdvait Foundation</p>
-              <p>Ghar Ghar Upanishad</p>
-              <p>About Acharya Prashant</p>
+            <div className="w-full py-6 text-gray-600 text-sm">
+              <h1 className="text-gray-800 font-semibold px-3 pb-2">MORE</h1>
+              {MoreItems?.map((item) => (
+                <div
+                  key={item?.title}
+                  onClick={() => handleMenuItem(`${item?.path}`)}
+                  className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
+                >
+                  {item?.title}
+                </div>
+              ))}
             </div>
             <hr />
-            <div className="space-y-3 py-6 text-gray-600 text-sm">
-              <h1 className="text-gray-800 font-semibold">
+            <div className="py-6 text-gray-600 text-sm">
+              <h1 className="text-gray-800 font-semibold px-3 pb-2">
                 EXPLORE CATEGORIES
               </h1>
-              <p>Vedant - Upanishads</p>
-              <p>Vedant - Bhagavad Gita</p>
-              <p>Other Scriptures</p>
-              <p>Saints and Masters</p>
-              <p>Other Streams</p>
-              <p>Life Questions</p>
+              {CategoryItems?.map((item) => (
+                <div
+                  key={item?.title}
+                  onClick={() => handleMenuItem(`${item?.path}`)}
+                  className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
+                >
+                  {item?.title}
+                </div>
+              ))}
             </div>
           </section>
           <div className="bottom-0 w-full">

@@ -2,6 +2,7 @@ import { useAppContext } from "@/contexts";
 import { ArrowDropDownOutlined, VolunteerActivism } from "@mui/icons-material";
 import { Button, Collapse, Menu, MenuItem } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { BiMenuAltLeft } from "react-icons/bi";
@@ -13,6 +14,24 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { MdExpandMore } from "react-icons/md";
+
+export const MenuItems = [
+  { title: "Home", path: "/" },
+  { title: "Gita Samagam", path: "/live-sessions/gita" },
+  {
+    title: "Vedanta: Basics to Classics",
+    path: "/live-sessions/vedanta-basics-to-classics",
+  },
+  { title: "Video Series", path: "/video-modules/series/course-series-eeb9d3" },
+  { title: "Ap Books", path: "/books" },
+  { title: "Ap Articles", path: "/articles" },
+  { title: "For a Talk", path: "/invite/for-talks" },
+  { title: "For an Interview", path: "/invite/for-Interview" },
+  { title: "Media and Public Interactions ", path: "/media" },
+  { title: "Contact Us", path: "/" },
+  { title: "Careers", path: "/hiring" },
+  { title: "Donate", path: "/contribute" },
+];
 
 const langArr = ["हिन्दी", "English"];
 const ResponsiveNavbar = () => {
@@ -36,6 +55,12 @@ const ResponsiveNavbar = () => {
   };
   const langOpen = Boolean(langAnchorEl);
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+
+  const handleResNav = (path: any) => {
+    router?.push(`${path}`);
+    setOpen(false);
+  };
   return (
     <section className="lg:hidden py-4 cursor-pointer bg-[#D24115] shadow-[rgba(50,_50,_105,_0.15)_0px_2px_5px_0px,_rgba(0,_0,_0,_0.05)_0px_1px_1px_0px]">
       <div className="relative main-container h-full flex justify-between items-center">
@@ -103,23 +128,20 @@ const ResponsiveNavbar = () => {
               <ResponsiveCategoryList onClose={() => setOpen(false)} />
             </div>
             <hr />
-            <div className="w-full space-y-3 py-6 text-white text-lg">
-              <p>Gita Samagam</p>
-              <p>Vedanta: Basic to Classics</p>
-              <p>AP Books</p>
-              <p>AP Articles</p>
-              <div>
-                <Link href={"/video-modules/series/course-series-eeb9d3"}>
-                  Video Series
-                </Link>
-              </div>
-              <p>AP Circle</p>
-              <p>Invite For Talk</p>
-              <p>Invite For An Interview</p>
-              <p>Media and Public Interaction</p>
-              <p>Contact Us</p>
-              <p>Careers</p>
-              <div className="bg-[#FFEDD5] w-fit px-6 py-2 rounded-lg text-[#D24115] text-lg font-semibold flex items-center justify-center gap-2">
+            <div className="w-full py-6 text-white text-lg">
+              {MenuItems?.slice(0, 11)?.map((item) => (
+                <div
+                  key={item?.title}
+                  onClick={() => handleResNav(`${item?.path}`)}
+                  className="hover:bg-orange-600/50 hover:text-orange-100 rounded-lg px-3 py-2 common-transition"
+                >
+                  {item?.title}
+                </div>
+              ))}
+              <div
+                onClick={() => router?.push(`/contribute`)}
+                className="bg-[#FFEDD5] w-fit px-6 py-2 mt-2 rounded-lg text-[#D24115] text-lg font-semibold flex items-center justify-center gap-2"
+              >
                 <VolunteerActivism className="text-[#D24115]" />
                 Donate
               </div>
