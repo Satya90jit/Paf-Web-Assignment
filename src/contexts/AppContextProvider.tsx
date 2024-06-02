@@ -20,7 +20,7 @@ const AppContextProvider = ({
 }) => {
   const isMounted = useIsMounted();
   const [selectedLanguage, setSelectedLanguage] =
-    useState<LanguageType>("english");
+    useState<LanguageType>("hindi");
 
   const changeLanguage = useCallback((lang: LanguageType) => {
     isMounted.current && setSelectedLanguage(lang);
