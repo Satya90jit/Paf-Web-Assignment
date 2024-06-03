@@ -38,8 +38,8 @@ const MenuDrawer = () => {
   };
 
   const handleMenuItem = (path: any) => {
-    router?.push(`${path}`);
     setOpen(false);
+    router?.push(`${path}`);
   };
 
   return (
