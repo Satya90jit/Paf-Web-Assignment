@@ -39,7 +39,10 @@ const MenuDrawer = () => {
 
   const handleMenuItem = (path: any) => {
     setOpen(false);
-    router?.push(`${path}`);
+
+    setTimeout(() => {
+      router?.push(`${path}`);
+    }, 200);
   };
 
   return (
