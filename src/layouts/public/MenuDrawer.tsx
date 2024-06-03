@@ -42,7 +42,7 @@ const MenuDrawer = () => {
 
     setTimeout(() => {
       router?.push(`${path}`);
-    }, 200);
+    }, 300);
   };
 
   return (
