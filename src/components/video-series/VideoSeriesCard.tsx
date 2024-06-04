@@ -1,4 +1,5 @@
 import { ICONS } from "@/assets";
+import { useWindowSize } from "@/hooks";
 import { ICourseSeries } from "@/types/courseSeries";
 import { ICourseSeriesDetails } from "@/types/courseSeriesDetails";
 import { constructImageUrl, formatDuration } from "@/utils";
@@ -63,7 +64,7 @@ const VideoSeriesCard = ({
       </h4>
       <hr />
       <aside className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-14 md:gap-10 gap-8">
-        {courses?.map((item: ICourseSeries) => (
+        {courses?.map((item: ICourseSeries, index: number) => (
           <SeriesCard key={item?.id} item={item} />
         ))}
       </aside>
@@ -74,8 +75,14 @@ const VideoSeriesCard = ({
 export default VideoSeriesCard;
 
 const SeriesCard = ({ item }: { item: ICourseSeries }) => {
+  const [width] = useWindowSize();
   return (
-    <section className="hover:bg-orange-100/20 rounded-lg border-b p-4 border-gray-500 space-y-2 cursor-pointer">
+    <section
+      key={item?.id}
+      className={`hover:bg-orange-100/20 rounded-lg border-b ${
+        width < 640 ? "last:border-none" : ""
+      } p-4 border-gray-500 space-y-2 cursor-pointer`}
+    >
       <div className="clip-custom bg-orange-700/50 text-white shadow-sm text-md rounded-md font-medium pr-4 pl-2 inline-block">
         भाग {item?.series?.order?.seq}
       </div>
