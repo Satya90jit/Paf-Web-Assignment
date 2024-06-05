@@ -16,6 +16,21 @@ const VideoSeriesCard = ({
 }) => {
   const imageUrl = constructImageUrl(courseDetails?.thumbnail);
 
+  courses?.forEach((item) => {
+    console.log("each--->", item?.id);
+  }); // its only modify the original array , dose not return anything
+
+  const a = courses?.map((item) => item?.title); // its give a new array , with modified value
+  console.log("map--aaa->", a);
+
+  // now try the ab with let const and var
+  // if let then we have to declare it outside like let ab , same as for const like , const ab
+  {
+    //  here we can declare with let and const cant be access to jsx .as let and const are block scope
+    var ab = courses?.map((item: ICourseSeries) => (
+      <SeriesCard key={item?.id} item={item} />
+    ));
+  }
   return (
     <section>
       <div className="flex gap-1 py-6">
@@ -63,10 +78,9 @@ const VideoSeriesCard = ({
         Video Series ({courseDetails?.coursesCount})
       </h4>
       <hr />
+      {/* we can also  use in this way the map,  its return the new array with modification */}
       <aside className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-14 md:gap-10 gap-8">
-        {courses?.map((item: ICourseSeries, index: number) => (
-          <SeriesCard key={item?.id} item={item} />
-        ))}
+        {ab}
       </aside>
     </section>
   );
@@ -109,3 +123,35 @@ const SeriesCard = ({ item }: { item: ICourseSeries }) => {
     </section>
   );
 };
+
+//!Notes
+// ForEach is more commonly used when you need to iterate over an array and perform a side effect for each element,
+//  without needing to create a new array. Some common use cases for forEach include:
+
+//? 1. Logging or Printing:
+// If you need to log each element in an array or print them to the console, forEach is a straightforward choice.
+
+// const numbers = [1, 2, 3, 4];
+// numbers.forEach((number) => console.log(number));
+
+//? 2. Modifying Existing Data:
+//  When you want to update elements in an existing array without creating a new array, forEach can be useful.
+
+//? 3. Iterating Over DOM Elements:
+//  When working with DOM elements directly, forEach can be used to iterate over a NodeList or an array-like object returned by querySelectorA
+
+// const elements = document.querySelectorAll(".a");
+// elements.forEach((element) => {
+//   // Do something with each element
+// });
+
+//? 4. Asynchronous Operations:
+// If you need to perform asynchronous operations for each element in an array, forEach can be used, but you need to be careful with handling the asynchronous nature of the operations.
+
+// const urls = ["url1", "url2", "url3"];
+// urls.forEach((url) => {
+//   fetch(url)
+//     .then((response) => response.json())
+//     .then((data) => console.log(data))
+//     .catch((error) => console.error(error));
+// });
