@@ -155,3 +155,15 @@ const SeriesCard = ({ item }: { item: ICourseSeries }) => {
 //     .then((data) => console.log(data))
 //     .catch((error) => console.error(error));
 // });
+
+//! IMPORTANT How can we implement the foreach as like map
+
+// {
+//   var ab: any = [];
+//   //  here we can declare with let and const cant be access to jsx .as let and const are block scope
+//   courses?.map((item: ICourseSeries) =>
+//     ab.push(<SeriesCard key={item?.id} item={item} />)
+//   );
+// }
+
+// now we use that ab to the <aside>{ab}</aside>  , it work same as map works

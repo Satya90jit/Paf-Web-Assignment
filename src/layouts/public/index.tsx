@@ -12,6 +12,7 @@ type Props = {
   navClass?: string | undefined;
   insideNavClass?: string | undefined;
   innerBarClass?: string | undefined;
+  ogImage?: string;
 };
 
 const PublicLayout = ({
@@ -21,12 +22,31 @@ const PublicLayout = ({
   navClass,
   insideNavClass,
   innerBarClass,
+  ogImage = "https://paf-web-assignment.vercel.app/ap.jpg",
 }: Props) => {
   return (
     <>
       <Head>
-        <meta name="description" content={description} />
         <title>{title}</title>
+        <meta
+          property="og:url"
+          content="https://paf-web-assignment.vercel.app"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          name="description"
+          content={
+            description
+              ? description
+              : "Acharya Prashant is dedicated to building a brighter future for you"
+          }
+        />
+        <meta
+          property="og:image"
+          content={
+            ogImage ? ogImage : "https://paf-web-assignment.vercel.app/ap.jpg"
+          }
+        />
       </Head>
       <main>
         <Navbar navClass={navClass} />
