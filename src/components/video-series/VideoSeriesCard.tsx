@@ -8,11 +8,11 @@ import { ShareComponent } from "../core";
 const VideoSeriesCard = ({
   courseDetails,
   courses,
-  isValidating,
-}: {
+}: // isValidating,
+{
   courseDetails: ICourseSeriesDetails;
   courses: ICourseSeries[];
-  isValidating: Boolean;
+  // isValidating: Boolean;
 }) => {
   const imageUrl = constructImageUrl(courseDetails?.thumbnail);
 
@@ -42,7 +42,7 @@ const VideoSeriesCard = ({
         {courseDetails?.title}
       </h4>
       <aside className="flex lg:flex-row flex-col gap-8 w-full pb-8">
-        {isValidating ? (
+        {/* {isValidating ? (
           <div className="flex items-center justify-center h-[15rem] lg:h-[23rem] md:h-[20rem] w-full lg:w-[45%]">
             <div className="flex space-x-2 animate-pulse">
               <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
@@ -50,20 +50,20 @@ const VideoSeriesCard = ({
               <div className="w-3 h-3 bg-gray-400 rounded-full"></div>
             </div>
           </div>
-        ) : (
-          <div className="lg:h-[23rem] md:h-[20rem] h-[15rem] w-full lg:w-[45%] relative">
-            <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-t from-gray-800 to-transparent rounded-md"></div>
-            <img
-              src={imageUrl && imageUrl}
-              alt={courseDetails?.thumbnail?.key}
-              className="h-full w-full rounded-md object-cover"
-            />
-            <img
-              src="/ic_apsignature_hindi.png"
-              className="absolute bottom-3 right-3 w-20"
-            />
-          </div>
-        )}
+        ) : ( */}
+        <div className="lg:h-[23rem] md:h-[20rem] h-[15rem] w-full lg:w-[45%] relative">
+          <div className="absolute top-0 left-0 h-full w-full bg-gradient-to-t from-gray-800 to-transparent rounded-md"></div>
+          <img
+            src={imageUrl && imageUrl}
+            alt={courseDetails?.thumbnail?.key}
+            className="h-full w-full rounded-md object-cover"
+          />
+          <img
+            src="/ic_apsignature_hindi.png"
+            className="absolute bottom-3 right-3 w-20"
+          />
+        </div>
+        {/* )} */}
         <div className="space-y-3 lg:w-[55%] w-full">
           <h2 className="text-gray-900 font-semibold text-xl">
             {courseDetails?.subtitle}

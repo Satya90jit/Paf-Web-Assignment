@@ -13,24 +13,24 @@ const VideoSeriesPage = ({
   data,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
-  const { data: seriesData, isValidating } = useSWRAPI(
-    `https://api.acharyaprashant.org/v2/legacy/courses/series/optuser/${router?.query?.seriesId}`
-  );
+  // const { data: seriesData, isValidating } = useSWRAPI(
+  //   `https://api.acharyaprashant.org/v2/legacy/courses/series/optuser/${router?.query?.seriesId}`
+  // );
   // console.log("title------->", data?.details?.title);
 
-  // console.log(".......data from getsattic0--->", data);
+  console.log(".......data from getsattic0--->", data);
   const imageUrl = constructImageUrl(data?.details?.thumbnail);
   return (
     <PublicLayout
       title={`${data?.details?.title || "वेदांत"} | आचार्य प्रशांत`}
-      description={`${data?.details?.title}`}
+      description={`${data?.details?.subtitle}`}
       ogImage={imageUrl}
     >
       <section className="w-full main-container pb-12 md:space-y-12 space-y-8">
         <VideoSeriesCard
           courseDetails={data?.details}
           courses={data?.courses}
-          isValidating={isValidating}
+          // isValidating={isValidating}
         />
         <RelatedContent relatedContents={data?.relatedContent} />
         <FaqSection />
