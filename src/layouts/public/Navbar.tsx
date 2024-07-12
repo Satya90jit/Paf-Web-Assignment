@@ -1,9 +1,12 @@
 import { useAppContext } from "@/contexts";
+import { RootState } from "@/store";
+import { changeLanguage } from "@/store/languageSlice";
 import { ArrowDropDownOutlined, LocalPhoneOutlined } from "@mui/icons-material";
 import { Button, Menu, MenuItem } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import MenuDrawer from "./MenuDrawer";
 import ResponsiveNavbar from "./ResponsiveNavbar";
 
@@ -42,7 +45,13 @@ const Navbar = ({ navClass }: { navClass: string | undefined }) => {
   const [langAnchorEl, setLangAnchorEl] = useState(null);
   const [currentLangMenu, setCurrentLangMenu] = useState("");
   const router = useRouter();
-  const { selectedLanguage, changeLanguage } = useAppContext();
+  //! use of context API
+  // const { selectedLanguage, changeLanguage } = useAppContext();
+  //! use of redux toolkit
+  const dispatch = useDispatch();
+  const selectedLanguage = useSelector(
+    (state: RootState) => state.language.selectedLanguage
+  );
 
   const handleClick = (event: any, menu: any) => {
     setAnchorEl(event.currentTarget);
@@ -66,8 +75,14 @@ const Navbar = ({ navClass }: { navClass: string | undefined }) => {
     handleClose();
   };
 
+  //! use of context API
+  // const handleLangSelect = (lang: any) => {
+  //   changeLanguage?.(lang);
+  //   handleClose();
+  // };
+  //! use of redux toolkit
   const handleLangSelect = (lang: any) => {
-    changeLanguage?.(lang);
+    dispatch(changeLanguage(lang));
     handleClose();
   };
 
