@@ -1,6 +1,7 @@
 import { useAppContext } from "@/contexts";
 import { RootState } from "@/store";
 import { changeLanguage } from "@/store/languageSlice";
+import useLanguageStore from "@/store/useLanguageStore";
 import { ArrowDropDownOutlined, LocalPhoneOutlined } from "@mui/icons-material";
 import { Button, Menu, MenuItem } from "@mui/material";
 import Link from "next/link";
@@ -45,13 +46,17 @@ const Navbar = ({ navClass }: { navClass: string | undefined }) => {
   const [langAnchorEl, setLangAnchorEl] = useState(null);
   const [currentLangMenu, setCurrentLangMenu] = useState("");
   const router = useRouter();
+
+  //! use of Zustand
+  const selectedLanguage = useLanguageStore((state) => state.selectedLanguage);
+  const changeLanguage = useLanguageStore((state) => state.changeLanguage);
   //! use of context API
   // const { selectedLanguage, changeLanguage } = useAppContext();
   //! use of redux toolkit
-  const dispatch = useDispatch();
-  const selectedLanguage = useSelector(
-    (state: RootState) => state.language.selectedLanguage
-  );
+  // const dispatch = useDispatch();
+  // const selectedLanguage = useSelector(
+  //   (state: RootState) => state.language.selectedLanguage
+  // );
 
   const handleClick = (event: any, menu: any) => {
     setAnchorEl(event.currentTarget);
@@ -74,6 +79,11 @@ const Navbar = ({ navClass }: { navClass: string | undefined }) => {
     router.push(path);
     handleClose();
   };
+  //! use of context API
+  const handleLangSelect = (lang: string) => {
+    changeLanguage(lang as "English" | "Hindi");
+    handleClose();
+  };
 
   //! use of context API
   // const handleLangSelect = (lang: any) => {
@@ -81,10 +91,10 @@ const Navbar = ({ navClass }: { navClass: string | undefined }) => {
   //   handleClose();
   // };
   //! use of redux toolkit
-  const handleLangSelect = (lang: any) => {
-    dispatch(changeLanguage(lang));
-    handleClose();
-  };
+  // const handleLangSelect = (lang: any) => {
+  //   dispatch(changeLanguage(lang));
+  //   handleClose();
+  // };
 
   const open = Boolean(anchorEl);
   const langOpen = Boolean(langAnchorEl);

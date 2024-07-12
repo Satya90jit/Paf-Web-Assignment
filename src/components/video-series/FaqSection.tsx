@@ -1,6 +1,7 @@
 import { useAppContext } from "@/contexts";
 import { useSWRAPI } from "@/hooks";
 import { RootState } from "@/store";
+import useLanguageStore from "@/store/useLanguageStore";
 import { ExpandMore } from "@mui/icons-material";
 import { Collapse, Typography } from "@mui/material";
 import { useState } from "react";
@@ -12,12 +13,14 @@ type FaqType = {
 };
 
 const FaqSection = () => {
+  //! use of Zustand
+  const selectedLanguage = useLanguageStore((state) => state.selectedLanguage);
   //! use of context API
   // const { selectedLanguage } = useAppContext();
   //! use of redux toolkit
-  const selectedLanguage = useSelector(
-    (state: RootState) => state.language.selectedLanguage
-  );
+  // const selectedLanguage = useSelector(
+  //   (state: RootState) => state.language.selectedLanguage
+  // );
   const { data } = useSWRAPI(
     `https://api.acharyaprashant.org/v2/legacy/courses/faqs?language=${
       selectedLanguage == "English" ? "english" : "hindi"
