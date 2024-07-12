@@ -1,4 +1,5 @@
 // store/useLanguageStore.ts
+import { getFromLocalStorage, saveToLocalStorage } from "@/utils";
 import { create } from "zustand";
 
 type LanguageType = "English" | "Hindi";
@@ -8,16 +9,25 @@ interface LanguageState {
   changeLanguage: (lang: LanguageType) => void;
 }
 
-const useLanguageStore = create<LanguageState>((set) => ({
-  selectedLanguage: "English",
-  changeLanguage: (lang: LanguageType) => set({ selectedLanguage: lang }),
-}));
+const useLanguageStore = create<LanguageState>((set) => {
+  // Read from local storage or default to 'English'
+  const initialLanguage: any = {
+    selectedLanguage:
+      (getFromLocalStorage("currentLanguage") as LanguageType) || "hindi",
+  };
+  return {
+    selectedLanguage: initialLanguage,
+    changeLanguage: (lang: LanguageType) => {
+      set({ selectedLanguage: lang });
+      saveToLocalStorage("currentLanguage", lang);
+    },
+  };
+});
 
 export default useLanguageStore;
 
 //? Explanation of changeLanguage
 // changeLanguage: (lang: LanguageType) => set({ selectedLanguage: lang })
-
 // changeLanguage Method: This is a method defined in your store’s state. It takes a parameter lang of type LanguageType.
 
 //? Calling set:
