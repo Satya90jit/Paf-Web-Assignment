@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 
 const ShareComponent = () => {
+  console.log("rending...child---->");
   return (
     <section className="space-y-6">
       <h4 className="text-xl font-medium text-gray-500">Share this series :</h4>
