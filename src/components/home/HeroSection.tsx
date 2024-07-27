@@ -18,7 +18,7 @@ const HeroSection = () => {
             To demolish all that is false
           </h2>
           <div className="w-full lg:pr-14 lg:space-y-5 space-y-3">
-            <h3 className="lg:text-xl text-lg  text-gray-800 font-sans">
+            <h3 className="lg:text-xl text-lg  text-gray-800 font-sans line-clamp-3">
               Acharya Prashant is a spiritual teacher rooted in Advait Vedanta.
               His unique spiritual literature is at par with the highest words
               that mankind has ever known. Equally, one could simply call him a

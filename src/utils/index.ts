@@ -1,4 +1,5 @@
 import { Thumbnail } from "@/types/thumbnail";
+import { useMemo } from "react";
 //SET To LocalStorage
 export const saveToLocalStorage = (key: any, value: any) => {
   if (typeof window !== "undefined") {

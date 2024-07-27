@@ -79,17 +79,17 @@ const currentEvents = [
 ];
 
 const TopicsSection = () => {
-  const [width] = useWindowSize();
-  const [orderedCategories, setOrderedCategories] =
-    useState<Category[]>(categories);
+  // const [width] = useWindowSize();
+  // const [orderedCategories, setOrderedCategories] =
+  //   useState<Category[]>(categories);
 
-  useEffect(() => {
-    if (width >= 768) {
-      setOrderedCategories([categories[0], categories[2], categories[1]]); // Large and tablet screens
-    } else {
-      setOrderedCategories(categories); // Mobile screens
-    }
-  }, [width]);
+  // useEffect(() => {
+  //   if (width >= 768) {
+  //     setOrderedCategories([categories[0], categories[2], categories[1]]); // Large and tablet screens
+  //   } else {
+  //     setOrderedCategories(categories); // Mobile screens
+  //   }
+  // }, [width]);
   return (
     <section className="main-container flex lg:flex-row flex-col justify-between gap-8">
       <div className="lg:p-8 md:p-5 py-5 px-3 bg-orange-200/10 lg:w-1/2 w-full">
@@ -136,23 +136,34 @@ const TopicsSection = () => {
           Topics Covered
         </h1>
         <div className="grid md:grid-cols-2 grid-cols-1 gap-8 lg:mt-12 mt-6">
-          {orderedCategories?.map((items, index) => (
-            <div key={index}>
+          {categories?.map((items, index) => (
+            <div
+              key={index}
+              className={`${index === 1 ? "lg:order-last order-none" : ""}`}
+            >
               <div className="clip-custom bg-orange-700 text-white shadow-sm text-md rounded-md font-medium pr-7 pl-2 inline-block">
                 {items?.level}
               </div>
-              {items?.labels?.map((label, i) => (
-                <div
-                  key={i}
-                  className={`${
-                    items?.level === "Advanced"
-                      ? "border-red-600"
-                      : "border-gray-800"
-                  } flex flex-col bg-white border  text-sm py-2 mt-2 rounded-lg text-center hover:bg-orange-600 hover:text-white common-transition cursor-pointer`}
-                >
-                  {label}
-                </div>
-              ))}
+              <div className="flex flex-col">
+                {items?.labels?.map((label, i) => (
+                  <div
+                    key={i}
+                    className={`${
+                      items?.level === "Advanced"
+                        ? "border-red-600"
+                        : "border-gray-800"
+                    } ${
+                      i === 0
+                        ? "order-last"
+                        : i === items.labels.length - 1
+                        ? "order-first"
+                        : ""
+                    } flex flex-col bg-white border text-sm py-2 mt-2 rounded-lg text-center hover:bg-orange-600 hover:text-white common-transition cursor-pointer`}
+                  >
+                    {label}
+                  </div>
+                ))}
+              </div>
             </div>
           ))}
         </div>

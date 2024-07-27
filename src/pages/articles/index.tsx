@@ -1,4 +1,5 @@
 import { PublicLayout } from "@/layouts";
+import Link from "next/link";
 import React, { useState, useEffect, useCallback } from "react";
 
 const ArticlesMainPage = () => {
@@ -21,6 +22,12 @@ const ArticlesMainPage = () => {
       innerBarClass="lg:mt-[48px] mt-[68px]"
     >
       <section className="flex flex-col justify-center items-center min-h-[80vh]">
+        <Link
+          href={"/articles/topic/5"}
+          className="text-end bg-gray-200 px-6 py-2"
+        >
+          go to topic
+        </Link>
         <div className="text-2xl font-semibold text-orange-700 mb-5">
           Debouncing Test Page
         </div>
