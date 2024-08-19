@@ -1,4 +1,4 @@
-import { Menu } from "@mui/icons-material";
+import { Close, Menu } from "@mui/icons-material";
 import { Drawer } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -61,82 +61,95 @@ const MenuDrawer = () => {
         onClose={handleClose}
         anchor={"right"}
         BackdropProps={{
-          className: "bg-gray-800 bg-opacity-50",
+          className: "bg-orange-950 bg-opacity-50",
         }}
         transitionDuration={500}
       >
-        <article className="bg-white w-[25rem] shadow-sm cursor-pointer">
-          <section className="main-container w-full flex flex-col pt-4 font-medium">
-            <div className="flex items-center gap-2 pb-6">
-              <span className="h-12 w-12 rounded-full bg-gray-700 text-xl text-white p-2 flex justify-center items-center">
-                S
-              </span>
-              <div className="flex items-start flex-col">
-                <p className="text-lg text-gray-700">Satyajit Sahu</p>
-                <p className="text-gray-600 text-sm">
-                  satyajitsahu1611@gmail.com
-                </p>
+        <>
+          <section className="relative h-full w-full overflow-visible">
+            <div
+              onClick={handleClose}
+              className="fixed top-2 right-[25.5rem] bg-white text-orange-700 cursor-pointer h-9 w-9 rounded-full flex items-center justify-center z-50"
+            >
+              <Close />
+            </div>
+
+            <div className="bg-white !w-[25rem] h-full z-20 shadow-sm overflow-y-auto">
+              <section className="px-5 w-full flex flex-col pt-4 font-medium">
+                <div className="flex items-center gap-2 pb-6">
+                  <span className="h-12 w-12 rounded-full bg-gray-700 text-xl text-white p-2 flex justify-center items-center">
+                    S
+                  </span>
+                  <div className="flex items-start flex-col">
+                    <p className="text-lg text-gray-700">Satyajit Sahu</p>
+                    <p className="text-gray-600 text-sm">
+                      satyajitsahu1611@gmail.com
+                    </p>
+                  </div>
+                </div>
+                <hr />
+                <div className="flex flex-col w-full py-6 text-gray-600 text-sm">
+                  {MenuItems?.map((item) => (
+                    <div
+                      key={item?.title}
+                      onClick={() => handleMenuItem(`${item?.path}`)}
+                      className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
+                    >
+                      {item?.title}
+                    </div>
+                  ))}
+                </div>
+                <hr />
+                <div className="flex flex-col w-full py-6 text-gray-600 text-sm">
+                  {OtherItems?.map((item) => (
+                    <div
+                      key={item?.title}
+                      onClick={() => handleMenuItem(`${item?.path}`)}
+                      className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
+                    >
+                      {item?.title}
+                    </div>
+                  ))}
+                </div>
+                <hr />
+                <div className="w-full py-6 text-gray-600 text-sm">
+                  <h1 className="text-gray-800 font-semibold px-3 pb-2">
+                    MORE
+                  </h1>
+                  {MoreItems?.map((item) => (
+                    <div
+                      key={item?.title}
+                      onClick={() => handleMenuItem(`${item?.path}`)}
+                      className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
+                    >
+                      {item?.title}
+                    </div>
+                  ))}
+                </div>
+                <hr />
+                <div className="py-6 text-gray-600 text-sm">
+                  <h1 className="text-gray-800 font-semibold px-3 pb-2">
+                    EXPLORE CATEGORIES
+                  </h1>
+                  {CategoryItems?.map((item) => (
+                    <div
+                      key={item?.title}
+                      onClick={() => handleMenuItem(`${item?.path}`)}
+                      className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
+                    >
+                      {item?.title}
+                    </div>
+                  ))}
+                </div>
+              </section>
+              <div className="bottom-0 w-full">
+                <div className="w-full bg-gray-300 hover:bg-gray-400/60 common-transition h-10 flex justify-center items-center text-orange-700 capitalize text-md font-semibold">
+                  <p>logout</p>
+                </div>
               </div>
             </div>
-            <hr />
-            <div className="flex flex-col w-full py-6 text-gray-600 text-sm">
-              {MenuItems?.map((item) => (
-                <div
-                  key={item?.title}
-                  onClick={() => handleMenuItem(`${item?.path}`)}
-                  className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
-                >
-                  {item?.title}
-                </div>
-              ))}
-            </div>
-            <hr />
-            <div className="flex flex-col w-full py-6 text-gray-600 text-sm">
-              {OtherItems?.map((item) => (
-                <div
-                  key={item?.title}
-                  onClick={() => handleMenuItem(`${item?.path}`)}
-                  className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
-                >
-                  {item?.title}
-                </div>
-              ))}
-            </div>
-            <hr />
-            <div className="w-full py-6 text-gray-600 text-sm">
-              <h1 className="text-gray-800 font-semibold px-3 pb-2">MORE</h1>
-              {MoreItems?.map((item) => (
-                <div
-                  key={item?.title}
-                  onClick={() => handleMenuItem(`${item?.path}`)}
-                  className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
-                >
-                  {item?.title}
-                </div>
-              ))}
-            </div>
-            <hr />
-            <div className="py-6 text-gray-600 text-sm">
-              <h1 className="text-gray-800 font-semibold px-3 pb-2">
-                EXPLORE CATEGORIES
-              </h1>
-              {CategoryItems?.map((item) => (
-                <div
-                  key={item?.title}
-                  onClick={() => handleMenuItem(`${item?.path}`)}
-                  className="hover:bg-orange-200/50 hover:text-orange-700 rounded-lg px-3 py-2 common-transition"
-                >
-                  {item?.title}
-                </div>
-              ))}
-            </div>
           </section>
-          <div className="bottom-0 w-full">
-            <div className="w-full bg-gray-300 hover:bg-gray-400/60 common-transition h-10 flex justify-center items-center text-orange-700 capitalize text-md font-semibold">
-              <p>logout</p>
-            </div>
-          </div>
-        </article>
+        </>
       </Drawer>
     </section>
   );

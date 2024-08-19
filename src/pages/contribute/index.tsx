@@ -50,7 +50,7 @@ const ContributePage = ({}) => {
           placeholder="Enter...for .2"
           onChange={(e) => SetInput2(e.target.value)}
         /> */}
-        {/* <CalculationMemo num={7} show="this is showing" /> */}
+        <CalculationMemo num={7} show="this is showing" />
         <ChildComponent increment={increment} />
         <p>Count: {count}</p>
         {/* <MemorizedComponent input1={input1} /> */}

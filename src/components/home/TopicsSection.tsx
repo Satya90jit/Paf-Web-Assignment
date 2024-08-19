@@ -91,84 +91,111 @@ const TopicsSection = () => {
   //   }
   // }, [width]);
   return (
-    <section className="main-container flex lg:flex-row flex-col justify-between gap-8">
-      <div className="lg:p-8 md:p-5 py-5 px-3 bg-orange-200/10 lg:w-1/2 w-full">
-        <h1 className="text-gray-800 font-semibold text-center lg:text-4x md:text-3xl text-2xl">
-          On Current Events
-        </h1>
-        <div className="flex flex-col gap-6 lg:mt-12 mt-6">
-          {currentEvents?.map((event, index) => (
-            <div
-              key={index}
-              className="hover:bg-orange-100/30 cursor-pointer lg:p-5 p-3 rounded-md border-b common-transition"
-            >
-              <p className="lg:text-xl text-lg lg:font-semibold font-medium text-gray-700 mb-3">
-                {event?.title}
-              </p>
-              <div className="flex items-center gap-5 text-gray-500 text-sm">
-                <p className="flex items-center gap-1">
-                  <AccessTime />
-                  {event?.duration}
+    <>
+      <section className="main-container flex lg:flex-row flex-col justify-between gap-8">
+        <div className="lg:p-8 md:p-5 py-5 px-3 bg-orange-200/10 lg:w-1/2 w-full">
+          <h1 className="text-gray-800 font-semibold text-center lg:text-4x md:text-3xl text-2xl">
+            On Current Events
+          </h1>
+          <div className="flex flex-col gap-6 lg:mt-12 mt-6">
+            {currentEvents?.map((event, index) => (
+              <div
+                key={index}
+                className="hover:bg-orange-100/30 cursor-pointer lg:p-5 p-3 rounded-md border-b common-transition"
+              >
+                <p className="lg:text-xl text-lg lg:font-semibold font-medium text-gray-700 mb-3">
+                  {event?.title}
                 </p>
-                <p className="flex items-center gap-1">
-                  <SignalCellularAltOutlined />
-                  {event?.views}
-                </p>
-                <p className="flex items-center gap-1">
-                  <ThumbUpOffAlt />
-                  {event?.likes}
-                </p>
-                <p className="flex items-center gap-1">
-                  <SmsOutlined />
-                  {event?.comments}
-                </p>
+                <div className="flex items-center gap-5 text-gray-500 text-sm">
+                  <p className="flex items-center gap-1">
+                    <AccessTime />
+                    {event?.duration}
+                  </p>
+                  <p className="flex items-center gap-1">
+                    <SignalCellularAltOutlined />
+                    {event?.views}
+                  </p>
+                  <p className="flex items-center gap-1">
+                    <ThumbUpOffAlt />
+                    {event?.likes}
+                  </p>
+                  <p className="flex items-center gap-1">
+                    <SmsOutlined />
+                    {event?.comments}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+          <p className="flex items-center lg:justify-start justify-center mt-8 text-red-700 hover:text-red-600 group common-transition cursor-pointer">
+            View All Articles{" "}
+            <ArrowRightAlt className="group-hover:-rotate-12 common-transition" />
+          </p>
         </div>
-        <p className="flex items-center lg:justify-start justify-center mt-8 text-red-700 hover:text-red-600 group common-transition cursor-pointer">
-          View All Articles{" "}
-          <ArrowRightAlt className="group-hover:-rotate-12 common-transition" />
+        {/* <div className="bg-blue-500 w-[30rem] border text-[200px] flex items-center justify-center">
+        <div className="bg-red-500 h-[19rem] w-[19rem] text-[10px] flex items-center justify-center">
+          <div className="bg-green-600 h-[10em] w-[10em] text-[10px] "></div>
+        </div>
+      </div> */}
+
+        <div className="p-8 bg-orange-200/10 lg:w-1/2 w-full">
+          <h1 className="lg:text-4x md:text-3xl text-2xl text-gray-800 font-semibold text-center">
+            Topics Covered
+          </h1>
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-8 lg:mt-12 mt-6">
+            {categories?.map((items, index) => (
+              <div
+                key={index}
+                className={`${index === 1 ? "lg:order-last order-none" : ""}`}
+              >
+                <div className="clip-custom bg-orange-700 text-white shadow-sm text-md rounded-md font-medium pr-7 pl-2 inline-block">
+                  {items?.level}
+                </div>
+                <div className="flex flex-col">
+                  {items?.labels?.map((label, i) => (
+                    <div
+                      key={i}
+                      className={`${
+                        items?.level === "Advanced"
+                          ? "border-red-600"
+                          : "border-gray-800"
+                      } ${
+                        i === 0
+                          ? "order-last"
+                          : i === items.labels.length - 1
+                          ? "order-first"
+                          : ""
+                      } flex flex-col bg-white border text-sm py-2 mt-2 rounded-lg text-center hover:bg-orange-600 hover:text-white common-transition cursor-pointer`}
+                    >
+                      {label}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      {/* <div className="h-auto p-4 border rounded-lg shadow-lg">
+        <h2 className="text-xl font-bold">Card with h-auto</h2>
+        <p>
+          This card adjusts its height based on the content inside it. Add more
+          content to see the effect.
         </p>
+      </div> */}
+      {/* <div className="h-fit p-4 border rounded-lg shadow-lg mt-10">
+        <h2 className="text-xl font-bold">Card with h-fit</h2>
+        <p>
+          This card only takes up the necessary vertical space for the content.
+        </p>
+      </div> */}
+      {/* //! grid cols span-cols */}
+      <div className="grid gap-6 grid-cols-5 main-container bg-gray-400 ">
+        <div className="h-10 bg-blue-300 col-span-2"></div>
+        <div className="h-10 bg-blue-300 col-span-1"></div>
+        <div className="h-10 bg-blue-300 col-span-2"></div>
       </div>
-      <div className="p-8 bg-orange-200/10 lg:w-1/2 w-full">
-        <h1 className="lg:text-4x md:text-3xl text-2xl text-gray-800 font-semibold text-center">
-          Topics Covered
-        </h1>
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-8 lg:mt-12 mt-6">
-          {categories?.map((items, index) => (
-            <div
-              key={index}
-              className={`${index === 1 ? "lg:order-last order-none" : ""}`}
-            >
-              <div className="clip-custom bg-orange-700 text-white shadow-sm text-md rounded-md font-medium pr-7 pl-2 inline-block">
-                {items?.level}
-              </div>
-              <div className="flex flex-col">
-                {items?.labels?.map((label, i) => (
-                  <div
-                    key={i}
-                    className={`${
-                      items?.level === "Advanced"
-                        ? "border-red-600"
-                        : "border-gray-800"
-                    } ${
-                      i === 0
-                        ? "order-last"
-                        : i === items.labels.length - 1
-                        ? "order-first"
-                        : ""
-                    } flex flex-col bg-white border text-sm py-2 mt-2 rounded-lg text-center hover:bg-orange-600 hover:text-white common-transition cursor-pointer`}
-                  >
-                    {label}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+    </>
   );
 };
 
